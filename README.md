@@ -13,6 +13,11 @@ O Hibernate oferece uma camada de abstração sobre o JDBC, permitindo que os de
 Mas o que faz que é ORM?
 ![image](https://github.com/lschlestein/hibernate/assets/103784532/113a22ec-b013-4b2e-839b-22a857f842dd)
 
+Por que utilizar Hibernate?
+
+- O Hibernate simplifica o acesso a dados, reduzindo o código *boiler plate* podendo assim o desenvolvedoR se focar na regra de negócios. Isso permite que você construa aplicações com mais rapidez e eficiência.
+- O Hibernate oferece recursos avançados como transações, gerenciamento de cache e otimização de consultas, que contribuem para a criação de aplicações mais robustas e performáticas, se comparadas ao JDBC.
+- O Hibernate é superior ao JDBC, seja pela redução no tempo de desenvolvimento, bem como em perfomance nas operações de persistência de dadaos.
 
 Fontes:
 
