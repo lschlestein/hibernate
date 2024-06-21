@@ -43,6 +43,8 @@ Essa capacidade de mapeamento facilita o desenvolvimento e a manutenção de apl
 
 HQL é uma linguagem de consulta orientada a objetos, que permite aos desenvolvedores consultar e manipular dados persistidos no banco de dados de forma mais intuitiva e independente da estrutura do banco de dados. É uma linguagem poderosa e flexível, semelhante ao SQL, mas com sintaxes e funcionalidades específicas para a manipulação de objetos. 
 A grande vantagem em se utilizar HQL, é que por exemplo, em caso de troca da base dados em utilização, não há necessidade de reescrita das consultas SQL, pois isso é feito pelo próprio Framework, ao se configurar o novo dialeto.
+https://thorben-janssen.com/jpql/
+https://www.tutorialspoint.com/jpa/jpa_jpql.htm
 
 ## Transações e gerenciamento de sessão
 
