@@ -10,6 +10,30 @@ O Hibernate oferece uma camada de abstração sobre o JDBC, permitindo que os de
 
 * *ORM* (Object/Relational Mapping) ou em português Mapeamento Objeto/Relacional.
 
+  Arquitetura
+  O Hibernate é um framework que fica entra a camada de acesso de dados e o banco relacional. Os dados são manipulados no banco de dados através das APIs do Hibernate.
+
+
+  ![image](https://github.com/lschlestein/hibernate/assets/103784532/b95ef724-0b6f-4dda-a6d1-9989ab5c5496)
+
+  Através de um  provedor *Jakarta Pesistence*, o framework implementas as especificações da API Java Persistence e suas associações, conforme o diagrama a seguir:
+  ![image](https://github.com/lschlestein/hibernate/assets/103784532/7f8e86f0-8dd0-412f-9073-7e8a30eea826)
+
+SessionFactory (org.hibernate.SessionFactory)
+Uma representação thread-safe (e imutável) do mapeamento do modelo de domínio do aplicativo para um banco de dados. Atua como uma fábrica de instâncias da *org.hibernate.Session* . O *EntityManagerFactory* é o equivalente a uma SessionFactory do Jakarta Persistence e basicamente, e suaus implementações são similares SessionFactory.
+
+A criação da fábrica SessionFactory utiliza muitos recursos computacionais, portanto, para qualquer banco de dados, o aplicativo deve ter apenas um arquivo SessionFactory. A fábrica SessionFactory mantém os serviços que o Hibernate usa em todos Session(s), como caches de segundo nível, pools de conexões, integrações de sistemas de transações, etc.
+
+Sessão (org.hibernate.Session)
+Um objeto de thread único e de curta duração que modela conceitualmente uma "Unidade de Trabalho" ( PoEAA ). Na nomenclatura Jakarta Persistence, o Session é representado por um EntityManager.
+
+Uma Session, por baixo dos panos envolve um JDBC java.sql.Connection e atua como uma fábrica de instâncias da org.hibernate.Transaction . Ela mantém um contexto de persistência geralmente de "leitura repetível" (cache de primeiro nível) do modelo de domínio do aplicativo.
+
+Transação ( org.hibernate.Transaction)
+Um objeto de thread único e de curta duração usado pelo aplicativo para demarcar limites de transações físicas individuais. A EntityTransaction é o equivalente do Jakarta Persistence e ambos atuam como uma API de abstração para isolar o aplicativo do sistema de transação subjacente em uso (JDBC ou JTA).
+
+
+
 Mas o que faz que é ORM?
 ![image](https://github.com/lschlestein/hibernate/assets/103784532/113a22ec-b013-4b2e-839b-22a857f842dd)
 
