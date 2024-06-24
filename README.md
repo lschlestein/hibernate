@@ -177,11 +177,12 @@ Na configuração do Hibernate, ainda é necessário indicar quais são as entid
 
 Implementaremos um modelo extremamente simples, somente para compreender como o Hibernate funciona, como se dão as antoações para que a JPA, compreenda o que estamos modelando, e como funciona o lombok.
 
----
-title: Exemplo Empresa
----
+
 
 ```mermaid
+---
+Exemplo Empresa
+---
 classDiagram
     Funcionario *--* Departamento : tem
     class Funcionario{
