@@ -75,10 +75,7 @@ O Hibernate fornece mecanismos para gerenciar transações e sessões, garantind
 
 O Hibernate oferece diferentes abordagens para lidar com transações, como gerenciamento de transações por meio da API JTA (Java Transaction API) ou usando transações programadas. O gerenciamento de sessões é normalmente feito por meio de um padrão de fábrica, permitindo a criação e o fechamento de sessões conforme necessário.
 
-[Getting Started with Hibernate](https://docs.jboss.org/hibernate/orm/6.3/quickstart/html_single/])
 
-MappedBy - Informa quem é o pai de um relacionamento Bi-direcional
-[Como utilizar MappedBy](https://developer.jboss.org/docs/DOC-55914)
 
 Para uma aplicação básica utilizando o Hibernate precisaremos configurar nosso projeto da seguinte forma:
 
@@ -338,3 +335,11 @@ Buscando dados:
         session.close();
         factory.close();
 ```
+
+Fontes:
+[Getting Started with Hibernate](https://docs.jboss.org/hibernate/orm/6.3/quickstart/html_single/])
+
+MappedBy - Informa quem é o pai de um relacionamento Bi-direcional
+[Como utilizar MappedBy](https://developer.jboss.org/docs/DOC-55914)
+
+[An Introduction to Hibernate 6](https://docs.jboss.org/hibernate/orm/6.5/introduction/html_single/Hibernate_Introduction.html#hibernate-and-jpa)
