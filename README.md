@@ -184,7 +184,7 @@ Implementaremos um modelo extremamente simples, somente para compreender como o 
 title: Exemplo Empresa
 ---
 classDiagram
-    Funcionario *--* Departamento : tem
+    Funcionario "1" *--* "1" Departamento : tem
     class Funcionario{
         -Long id
         -String nome
