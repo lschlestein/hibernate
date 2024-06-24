@@ -79,3 +79,89 @@ O Hibernate oferece diferentes abordagens para lidar com transações, como gere
 
 MappedBy - Informa quem é o pai de um relacionamento Bi-direcional
 [Como utilizar MappedBy](https://developer.jboss.org/docs/DOC-55914)
+
+Para uma aplicação básica utilizando o Hibernate precisaremos configurar nosso projeto da seguinte forma:
+Para o exemplo a seguir, utilizaremos Lombok, para simplificar os acessos a nossas classe.
+O Hibernate Core, que é o framework do Hibernate em si.
+A Jakarta Pesistence API (JPA).
+O Driver do Postgres.
+E o SLF4J, para logar as operações realizadas em nosso banco de dados.
+Arquivo pom.xml
+```xml
+    <dependencies>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>1.18.32</version>
+            <scope>provided</scope>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/org.hibernate.orm/hibernate-core -->
+        <dependency>
+            <groupId>org.hibernate.orm</groupId>
+            <artifactId>hibernate-core</artifactId>
+            <version>6.5.2.Final</version>
+        </dependency>
+
+        <!-- https://mvnrepository.com/artifact/org.postgresql/postgresql -->
+        <dependency>
+            <groupId>org.postgresql</groupId>
+            <artifactId>postgresql</artifactId>
+            <version>42.7.3</version>
+        </dependency>
+
+        <!-- https://mvnrepository.com/artifact/jakarta.persistence/jakarta.persistence-api -->
+        <dependency>
+            <groupId>jakarta.persistence</groupId>
+            <artifactId>jakarta.persistence-api</artifactId>
+            <version>3.2.0</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/org.slf4j/slf4j-api -->
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+            <version>2.0.13</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/org.slf4j/slf4j-simple -->
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-simple</artifactId>
+            <version>2.0.13</version>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
+```
+
+Com as dependencias configuradas, será necessário criar um arquivo de configuração do Hibernate.
+Esse arquivo, deverá ser criado e configurado nas resources, de nosso projeto.
+resources->hibernate.cfg.xml
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC "-//Hibernate/Hibernate Configuration DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-configuration">
+<hibernate-configuration>
+    <session-factory>
+        <!-- Configurações do PostgreSQL -->
+        <property name="hibernate.connection.url">jdbc:postgresql://localhost:5432/postgres</property>
+        <property name="hibernate.connection.username">postgres</property>
+        <property name="hibernate.connection.password">1234</property>
+
+        <!-- Configurações do Hibernate -->
+        <property name="hibernate.hbm2ddl.auto">update</property>
+        <property name="hibernate.show_sql">true</property>
+
+        <!-- Mapeamento de Classe -->
+        <mapping class="hibernate.Model.Departamento"/>
+        <mapping class="hibernate.Model.Funcionario"/>
+    </session-factory>
+</hibernate-configuration>
+```
+
+Nesse arquivo, são configuradas as seguintes informações:
+Dados referentes a conexão com o bando de dados a ser utilizado.
+Qual será o comportamento do Hibernate, em específico na propriedade:
+
+ <property name="hibernate.hbm2ddl.auto">update</property>
+Essa propriedade indica o que deve ser feito, caso haja alteração no esquema de uma de nossa tabelas.
+Com o update, caso as tabelas ainda não existam no banco de dados, elas serão criadas, na primeira vez que nosso programa for executado. 
+As modificações subsequentes serão feitas, com "update", sobre as tabelas já existentes.
+
