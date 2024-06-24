@@ -19,7 +19,7 @@ O Hibernate oferece uma camada de abstração sobre o JDBC, permitindo que os de
   ![image](https://github.com/lschlestein/hibernate/assets/103784532/7f8e86f0-8dd0-412f-9073-7e8a30eea826)
 
 ### SessionFactory (org.hibernate.SessionFactory)
-Uma representação thread-safe (e imutável) do mapeamento do modelo de domínio do aplicativo para um banco de dados. Atua como uma fábrica de instâncias da *org.hibernate.Session* . O *EntityManagerFactory* é o equivalente a uma SessionFactory do Jakarta Persistence e basicamente, e suaus implementações são similares SessionFactory.
+Uma representação thread-safe (e imutável) do mapeamento do modelo de domínio do aplicativo para um banco de dados. Atua como uma fábrica de instâncias da *org.hibernate.Session* . O *EntityManagerFactory* é o equivalente a uma SessionFactory do Jakarta Persistence e basicamente, e suas implementações são similares SessionFactory.
 
 A criação da fábrica SessionFactory utiliza muitos recursos computacionais, portanto, para qualquer banco de dados, o aplicativo deve ter apenas um arquivo SessionFactory. A fábrica SessionFactory mantém os serviços que o Hibernate usa em todos Session(s), como caches de segundo nível, pools de conexões, integrações de sistemas de transações, etc.
 
@@ -38,7 +38,7 @@ Mas o que faz que é ORM?
 
 Por que utilizar Hibernate?
 
-- O Hibernate simplifica o acesso a dados, reduzindo o código *boiler plate* podendo assim o desenvolvedoR se focar na regra de negócios. Isso permite que você construa aplicações com mais rapidez e eficiência.
+- O Hibernate simplifica o acesso a dados, reduzindo o código *boiler plate* podendo assim o desenvolvedor se focar na regra de negócios. Isso permite que você construa aplicações com mais rapidez e eficiência.
 - O Hibernate oferece recursos avançados como transações, gerenciamento de cache e otimização de consultas, que contribuem para a criação de aplicações mais robustas e performáticas, se comparadas ao JDBC.
 - O Hibernate é superior ao JDBC, seja pela redução no tempo de desenvolvimento, bem como em perfomance nas operações de persistência de dadaos.
 
@@ -343,3 +343,5 @@ MappedBy - Informa quem é o pai de um relacionamento Bi-direcional
 [Como utilizar MappedBy](https://developer.jboss.org/docs/DOC-55914)
 
 [An Introduction to Hibernate 6](https://docs.jboss.org/hibernate/orm/6.5/introduction/html_single/Hibernate_Introduction.html#hibernate-and-jpa)
+
+[PoEAA] Padröes da Arquitetura do Aplicativo Enterprise . 0-321-12742-0. por Martin Fowler. Copyright © 2003 Pearson Education, Inc.. Addison-Wesley Publishing Company.
