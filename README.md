@@ -315,3 +315,26 @@ Criando um Funcionário:
         session.close();
         factory.close();
 ```
+Buscando dados:
+```java
+//Aponta para o local onde se encontram as configurações feitas no hibernate.cfg.xml
+        Configuration cfg = new Configuration().configure("/hibernate.cfg.xml");
+        //Cria uma factory
+        SessionFactory factory = cfg.buildSessionFactory();
+
+        //Cria uma nova session
+        Session session = factory.openSession();
+
+        //Inicia uma nova transaction
+        session.beginTransaction();
+
+        //Buscando todos os departamentos
+        List<Departamento> departamentos = session.createQuery("SELECT d from Departamento d").getResultList();
+        //Buscando todos os departamentos
+        List<Funcionario> funcionarios = session.createQuery("SELECT f from Funcionario f").getResultList();
+
+        //Confirma a transação. Caso alguma das ações dadas após beginTransacation(), de errado, todas as outras ações feitas são canceladas.
+        session.getTransaction().commit();
+        session.close();
+        factory.close();
+```
