@@ -73,10 +73,9 @@ https://www.tutorialspoint.com/jpa/jpa_jpql.htm
 
 O Hibernate fornece mecanismos para gerenciar transações e sessões, garantindo a integridade e a consistência dos dados. Transações encapsulam um conjunto de operações que devem ser executadas como uma unidade atômica, ou seja, todas as operações devem ser concluídas com sucesso ou nenhuma delas é efetivada. O gerenciamento de sessões é crucial para controlar o ciclo de vida dos objetos e a interação com o banco de dados.
 
-MappedBy - Informa quem é o pai de um relacionamento Bi-direcional
-[Como utilizar MappedBy](https://developer.jboss.org/docs/DOC-55914)
-
 O Hibernate oferece diferentes abordagens para lidar com transações, como gerenciamento de transações por meio da API JTA (Java Transaction API) ou usando transações programadas. O gerenciamento de sessões é normalmente feito por meio de um padrão de fábrica, permitindo a criação e o fechamento de sessões conforme necessário.
 
-
 [Getting Started with Hibernate](https://docs.jboss.org/hibernate/orm/6.3/quickstart/html_single/])
+
+MappedBy - Informa quem é o pai de um relacionamento Bi-direcional
+[Como utilizar MappedBy](https://developer.jboss.org/docs/DOC-55914)
