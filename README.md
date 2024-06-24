@@ -181,7 +181,7 @@ Implementaremos um modelo extremamente simples, somente para compreender como o 
 
 ```mermaid
 ---
-Exemplo Empresa
+title: Exemplo Empresa
 ---
 classDiagram
     Funcionario *--* Departamento : tem
@@ -189,14 +189,14 @@ classDiagram
         -Long id
         -String nome
         -Double salario
-        +getters()
-        +setters()
+        +getters( )
+        +setters( )
     }
     class Departamento{
         -Long id
         -Long nome
-        +getters()
-        +setters()
+        +getters( )
+        +setters( )
     }
 ```
 
