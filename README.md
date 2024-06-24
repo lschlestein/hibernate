@@ -10,9 +10,8 @@ O Hibernate oferece uma camada de abstração sobre o JDBC, permitindo que os de
 
 * *ORM* (Object/Relational Mapping) ou em português Mapeamento Objeto/Relacional.
 
-  Arquitetura
+### Arquitetura
   O Hibernate é um framework que fica entra a camada de acesso de dados e o banco relacional. Os dados são manipulados no banco de dados através das APIs do Hibernate.
-
 
   ![image](https://github.com/lschlestein/hibernate/assets/103784532/b95ef724-0b6f-4dda-a6d1-9989ab5c5496)
 
