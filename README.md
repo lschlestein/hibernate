@@ -81,11 +81,17 @@ MappedBy - Informa quem é o pai de um relacionamento Bi-direcional
 [Como utilizar MappedBy](https://developer.jboss.org/docs/DOC-55914)
 
 Para uma aplicação básica utilizando o Hibernate precisaremos configurar nosso projeto da seguinte forma:
+
 Para o exemplo a seguir, utilizaremos Lombok, para simplificar os acessos a nossas classe.
+
 O Hibernate Core, que é o framework do Hibernate em si.
+
 A Jakarta Pesistence API (JPA).
+
 O Driver do Postgres.
+
 E o SLF4J, para logar as operações realizadas em nosso banco de dados.
+
 Arquivo pom.xml
 ```xml
     <dependencies>
