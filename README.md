@@ -189,12 +189,14 @@ classDiagram
         -Long id
         -String nome
         -Double salario
+        -Departamento departamento
         +getters( )
         +setters( )
     }
     class Departamento{
         -Long id
         -Long nome
+        -List<Funcionario> funcionarios
         +getters( )
         +setters( )
     }
