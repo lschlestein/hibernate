@@ -183,7 +183,7 @@ title: Exemplo Empresa
 
 ```mermaid
 classDiagram
-    Funcionario <|-- Departamento
+    Funcionario *--* Departamento : tem
     class Funcionario{
         -Long id
         -String nome
