@@ -175,5 +175,7 @@ As modificações subsequentes serão feitas, com "update", sobre as tabelas já
 
 Na configuração do Hibernate, ainda é necessário indicar quais são as entidades, as quais serâo persistidas no banco de dados.
 
+Implementaremos um modelo extremamente simples, somente para compreender como o Hibernate funciona, como se dão as antoações para que a JPA, compreenda o que estamos modelando, e como funciona o lombok.
+
 
 
