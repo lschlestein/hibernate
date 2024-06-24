@@ -167,7 +167,13 @@ Dados referentes a conexão com o bando de dados a ser utilizado.
 Qual será o comportamento do Hibernate, em específico na propriedade:
 
  <property name="hibernate.hbm2ddl.auto">update</property>
+ 
 Essa propriedade indica o que deve ser feito, caso haja alteração no esquema de uma de nossa tabelas.
+
 Com o update, caso as tabelas ainda não existam no banco de dados, elas serão criadas, na primeira vez que nosso programa for executado. 
 As modificações subsequentes serão feitas, com "update", sobre as tabelas já existentes.
+
+Na configuração do Hibernate, ainda é necessário indicar quais são as entidades, as quais serâo persistidas no banco de dados.
+
+
 
