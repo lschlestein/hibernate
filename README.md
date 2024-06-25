@@ -164,7 +164,12 @@ Dados referentes a conexão com o bando de dados a ser utilizado.
 Qual será o comportamento do Hibernate, em específico na propriedade:
 
  <property name="hibernate.hbm2ddl.auto">update</property>
- 
+
+none: não faz mudanças na estrutura de tabelas.
+validate: valida a estrutura das tabelas, mas não faz nenhuma mudança nas mesmas.
+update: modifica a estrutura já criada, se for necessário.
+create-drop: Deleta as tabelas, qua a SessionFactory é fechada, normalmente quando a aplicaçação é parada. A reiniciar a aplicação, a estrutura das tabelas é recriada, sem nenhum registro inserido na mesma.
+
 Essa propriedade indica o que deve ser feito, caso haja alteração no esquema de uma de nossa tabelas.
 
 Com o update, caso as tabelas ainda não existam no banco de dados, elas serão criadas, na primeira vez que nosso programa for executado. 
