@@ -177,7 +177,7 @@ Essa propriedade indica o que deve ser feito, caso haja alteração no esquema d
 ```xml
 <property name="hibernate.hbm2ddl.auto">update</property>
 ```
-* Deleta as tabelas, qua a SessionFactory é fechada, normalmente quando a aplicaçação é parada. Ao reiniciar a aplicação, a estrutura das tabelas é recriada, sem nenhum registro inserido na mesma. Deve-se utilizar com cuidado.
+* Deleta as tabelas, qua a SessionFactory é fechada, normalmente quando a aplicaçação é parada. Ao reiniciar a aplicação, a estrutura das tabelas é recriada, sem nenhum registro inserido na mesma. Deve-se utilizar com cuidado essa opção.
 ```xml
 <property name="hibernate.hbm2ddl.auto">create-drop</property>
 ```
