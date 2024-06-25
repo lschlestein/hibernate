@@ -163,22 +163,27 @@ Nesse arquivo, são configuradas as seguintes informações:
 Dados referentes a conexão com o bando de dados a ser utilizado.
 Qual será o comportamento do Hibernate, em específico na propriedade:
 
- <property name="hibernate.hbm2ddl.auto">update</property>
-
-none: não faz mudanças na estrutura de tabelas.
-validate: valida a estrutura das tabelas, mas não faz nenhuma mudança nas mesmas.
-update: modifica a estrutura já criada, se for necessário.
-create-drop: Deleta as tabelas, qua a SessionFactory é fechada, normalmente quando a aplicaçação é parada. A reiniciar a aplicação, a estrutura das tabelas é recriada, sem nenhum registro inserido na mesma.
-
 Essa propriedade indica o que deve ser feito, caso haja alteração no esquema de uma de nossa tabelas.
 
-Com o update, caso as tabelas ainda não existam no banco de dados, elas serão criadas, na primeira vez que nosso programa for executado. 
-As modificações subsequentes serão feitas, com "update", sobre as tabelas já existentes.
-
+* Não faz mudanças na estrutura de tabelas.
+```xml
+<property name="hibernate.hbm2ddl.auto">none</property>
+```
+* Valida a estrutura das tabelas, mas não faz nenhuma mudança nas mesmas.
+```xml
+<property name="hibernate.hbm2ddl.auto">validate</property>
+```
+* Modifica a estrutura já criada, se for necessário.
+```xml
+<property name="hibernate.hbm2ddl.auto">update</property>
+```
+* Deleta as tabelas, qua a SessionFactory é fechada, normalmente quando a aplicaçação é parada. Ao reiniciar a aplicação, a estrutura das tabelas é recriada, sem nenhum registro inserido na mesma. Deve-se utilizar com cuidado.
+```xml
+<property name="hibernate.hbm2ddl.auto">create-drop</property>
+```
 Na configuração do Hibernate, ainda é necessário indicar quais são as entidades, as quais serâo persistidas no banco de dados.
 
-Implementaremos um modelo extremamente simples, somente para compreender como o Hibernate funciona, como se dão as antoações para que a JPA, compreenda o que estamos modelando, e como funciona o lombok.
-
+Implementaremos um modelo extremamente simples, somente para compreender como o Hibernate funciona, como se dão as antoações para que a JPA, compreenda o que estamos modelando, e como funciona o Lombok.
 
 
 ```mermaid
@@ -198,7 +203,7 @@ classDiagram
     class Departamento{
         -Long id
         -Long nome
-        -List<Funcionario> funcionarios
+        -List <Funcionario> funcionarios
         +getters( )
         +setters( )
     }
