@@ -347,7 +347,7 @@ Buscando dados:
 ```
 
 Fontes:
-[Getting Started with Hibernate](https://docs.jboss.org/hibernate/orm/6.3/quickstart/html_single/])
+[Getting Started with Hibernate](https://docs.jboss.org/hibernate/orm/6.3/quickstart/html_single/)
 
 MappedBy - Informa quem é o pai de um relacionamento Bi-direcional
 [Como utilizar MappedBy](https://developer.jboss.org/docs/DOC-55914)
