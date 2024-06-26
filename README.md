@@ -466,8 +466,10 @@ Crie as entidades com as sua devidas anotações, respeitando a cardinalidade do
 - Cada Funcionário pertence a um único Departamento (N:1).
 - Cada Funcionário trabalha em um único Projeto (N:1).
 - Um Departamento tem nenhum ou muitos Funcionários.
-- Um Projeto tem nenhum ou muitos Funcionários. 
+- Um Projeto tem nenhum ou muitos Funcionários.
+
 As entidades deverão ser populadas pelo próprio programa. A interface via console é opcional, sendo desejável seu desenvolvimento.
+
 1 - Deverão apresentadas as seguintes consultas (métodos) para cada uma das entidades:
 * Encontrar todas as entidades
 * Encontrar uma única entidade
@@ -481,9 +483,10 @@ As entidades deverão ser populadas pelo próprio programa. A interface via cons
 Apresente os resultados das pesquisas solicitadas no console.
 
 Algumas referências:
-[Spring JPA Annotation - Prof. Herysson](https://github.com/Herysson/Programacao-Para-Web-Java-Spring/blob/b995ead95335a524fd746cd14707a08b4e0ca430/Aula%2003%20-%20Spring%20JPA%20Annotations.md))
-[Lombok - Prof. Herysson](https://github.com/Herysson/Programacao-Para-Web-Java-Spring/blob/b995ead95335a524fd746cd14707a08b4e0ca430/Aula%2004%20-%20Lombok.md)
-[Getting Started with Hibernate](https://docs.jboss.org/hibernate/orm/6.3/quickstart/html_single/)
-[Como utilizar MappedBy](https://developer.jboss.org/docs/DOC-55914)
-[An Introduction to Hibernate 6](https://docs.jboss.org/hibernate/orm/6.5/introduction/html_single/Hibernate_Introduction.html#hibernate-and-jpa)
-[PoEAA] Padröes da Arquitetura do Aplicativo Enterprise . 0-321-12742-0. por Martin Fowler. Copyright © 2003 Pearson Education, Inc.. Addison-Wesley Publishing Company.
+
+* [Spring JPA Annotation - Prof. Herysson](https://github.com/Herysson/Programacao-Para-Web-Java-Spring/blob/b995ead95335a524fd746cd14707a08b4e0ca430/Aula%2003%20-%20Spring%20JPA%20Annotations.md))
+* [Lombok - Prof. Herysson](https://github.com/Herysson/Programacao-Para-Web-Java-Spring/blob/b995ead95335a524fd746cd14707a08b4e0ca430/Aula%2004%20-%20Lombok.md)
+* [Getting Started with Hibernate](https://docs.jboss.org/hibernate/orm/6.3/quickstart/html_single/)
+* [Como utilizar MappedBy](https://developer.jboss.org/docs/DOC-55914)
+* [An Introduction to Hibernate 6](https://docs.jboss.org/hibernate/orm/6.5/introduction/html_single/Hibernate_Introduction.html#hibernate-and-jpa)
+* [PoEAA] Padröes da Arquitetura do Aplicativo Enterprise . 0-321-12742-0. por Martin Fowler. Copyright © 2003 Pearson Education, Inc.. Addison-Wesley Publishing Company.
