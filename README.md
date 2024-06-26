@@ -441,12 +441,49 @@ setParameter("idDepartamento",idDepartamento).getResultList();
 Além de DAOs, podem configurar nossas consultas de outra forma através de NamedQueries:
 [Exemplo de Uso de Named Queries](https://www.baeldung.com/hibernate-named-query)
 
-Fontes:
+Exercício:
+
+Tendo como base o modelo abaixo, crie um programa Java, utilizando Hibernate e JPA, que implemente o diagrama abaixo.
+```mermaid
+erDiagram
+    FUNCIONARIO {
+        Long id
+        String nome
+        String cargo
+    }
+    DEPARTAMENTO {
+        Long id
+          String nome
+    }
+    PROJETO {
+        Long id
+        String nome
+    }
+    FUNCIONARIO ||--o{ DEPARTAMENTO : "N-1"
+    FUNCIONARIO ||--o{ PROJETO : "N-1"
+```
+Crie as entidades com as sua devidas anotações, respeitando a cardinalidade do diagrama.
+Cada Funcionário pertence a um único Departamento (N:1).
+Cada Funcionário trabalha em um único Projeto (N:1).
+Um Departamento tem nenhum ou muitos Funcionários.
+Um Projeto tem nenhum ou muitos Funcionários. 
+As entidades deverão ser populadas pelo próprio programa. A interface via console é opcional, sendo desejável seu desenvolvimento.
+1 - Deverão apresentadas as seguintes consultas (métodos) para cada uma das entidades:
+* Encontrar todas as entidades
+* Encontrar uma única entidade
+* Alterar uma entidade
+* Apagar uma entidade
+
+2 - Escrever um método que retorne uma lista de todos os Funcionários que estão lotados em um determinado Departamento.
+
+3 - Escrever um métodos que retorne uma lista de todos os Funcionários que estão trabalhando em um determinado Projeto.
+
+Apresente os resultados das pesquisas solicitadas no console.
+
+Algumas referências:
+[Spring JPA Annotation - Prof. Herysson](https://github.com/Herysson/Programacao-Para-Web-Java-Spring/blob/b995ead95335a524fd746cd14707a08b4e0ca430/Aula%2003%20-%20Spring%20JPA%20Annotations.md))
+[Lombok - Prof. Herysson](https://github.com/Herysson/Programacao-Para-Web-Java-Spring/blob/b995ead95335a524fd746cd14707a08b4e0ca430/Aula%2004%20-%20Lombok.md)
 [Getting Started with Hibernate](https://docs.jboss.org/hibernate/orm/6.3/quickstart/html_single/)
-
-MappedBy - Informa quem é o pai de um relacionamento Bi-direcional
 [Como utilizar MappedBy](https://developer.jboss.org/docs/DOC-55914)
-
 [An Introduction to Hibernate 6](https://docs.jboss.org/hibernate/orm/6.5/introduction/html_single/Hibernate_Introduction.html#hibernate-and-jpa)
-
 [PoEAA] Padröes da Arquitetura do Aplicativo Enterprise . 0-321-12742-0. por Martin Fowler. Copyright © 2003 Pearson Education, Inc.. Addison-Wesley Publishing Company.
