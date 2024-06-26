@@ -345,6 +345,97 @@ Buscando dados utilizando JPA:
         session.close();
         factory.close();
 ```
+De forma inicial, já é possível notar a diferença, entre utilizarmos JDBC e Hibernate com JPA.
+Com o código acima, acabamo especificar a relação entre Departamento e Funcionário, inserimos novos Departamentos, e também novos funcionários com seus respecitvos departamentos.
+O próximo passo, é criar as DAOs, para as respectivas entidades.
+A documentação do Hibernate, recomenda utilizarmos a seguinte porçao de código para manipularmos nossa database:
+
+``` java
+// efetuar nossa consulta, ou inserção na nossa base de dados, confirmando que a tarefa foi concluída de forma correta
+    static void inSession(EntityManagerFactory factory, Consumer<EntityManager> work) {
+        var entityManager = factory.createEntityManager();
+        var transaction = entityManager.getTransaction();
+        try {
+            transaction.begin();
+            work.accept(entityManager);
+            transaction.commit();
+        }
+        catch (Exception e) {
+            if (transaction.isActive()) transaction.rollback();
+            throw e;
+        }
+        finally {
+            entityManager.close();
+        }
+    }
+```
+Exemplos:
+```java
+ inSession(factory, entityManager -> {
+            System.out.println(entityManager.createQuery("select nome from Departamento ").getResultList());
+            System.out.println(entityManager.createQuery("select nome from Funcionario ").getResultList());
+        });
+```
+
+Implementação da DAO para Departamento
+``` java
+public class DepartamentoDAO {
+    Configuration cfg = new Configuration().configure("/hibernate.cfg.xml");
+    SessionFactory factory = cfg.buildSessionFactory();
+    List<Departamento> departamentos = new ArrayList<>();
+    Departamento departamento;
+
+    static void inSession(EntityManagerFactory factory, Consumer<EntityManager> work) {
+        var entityManager = factory.createEntityManager();
+        var transaction = entityManager.getTransaction();
+        try {
+            transaction.begin();
+            work.accept(entityManager);
+            transaction.commit();
+        } catch (Exception e) {
+            if (transaction.isActive()) transaction.rollback();
+            throw e;
+        } finally {
+            entityManager.close();
+        }
+    }
+
+    public List<Departamento> findAll() {
+        inSession(factory, entityManager -> {
+            departamentos = entityManager.createQuery("select d from Departamento d", Departamento.class).getResultList();
+        });
+        return departamentos;
+    }
+
+    public void save(Departamento departamento) {
+        inSession(factory, entityManager -> {
+            entityManager.persist(departamento);
+        });
+    }
+
+    public void delete(Departamento departamento) {
+        inSession(factory, entityManager -> {
+            entityManager.remove(departamento);
+        });
+    }
+
+    public Departamento findById(int id) {
+        inSession(factory, entityManager -> {
+            departamento = entityManager.find(Departamento.class, id);
+        });
+        return departamento;
+    }
+
+    public void update(Departamento departamento) {
+        inSession(factory, entityManager -> {
+            entityManager.merge(departamento);
+        });
+    }
+}
+```
+
+Além de DAOs, podem configurar nossas consultas de outra forma através de NamedQueries:
+[Exemplo de Uso de Named Queries](https://www.baeldung.com/hibernate-named-query)
 
 Fontes:
 [Getting Started with Hibernate](https://docs.jboss.org/hibernate/orm/6.3/quickstart/html_single/)
