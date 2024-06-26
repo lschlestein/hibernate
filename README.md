@@ -484,7 +484,7 @@ Apresente os resultados das pesquisas solicitadas no console.
 
 Algumas referências:
 
-* [Spring JPA Annotation - Prof. Herysson](https://github.com/Herysson/Programacao-Para-Web-Java-Spring/blob/b995ead95335a524fd746cd14707a08b4e0ca430/Aula%2003%20-%20Spring%20JPA%20Annotations.md))
+* [Spring JPA Annotation - Prof. Herysson](https://github.com/Herysson/Programacao-Para-Web-Java-Spring/blob/b995ead95335a524fd746cd14707a08b4e0ca430/Aula%2003%20-%20Spring%20JPA%20Annotations.md)
 * [Lombok - Prof. Herysson](https://github.com/Herysson/Programacao-Para-Web-Java-Spring/blob/b995ead95335a524fd746cd14707a08b4e0ca430/Aula%2004%20-%20Lombok.md)
 * [Getting Started with Hibernate](https://docs.jboss.org/hibernate/orm/6.3/quickstart/html_single/)
 * [Como utilizar MappedBy](https://developer.jboss.org/docs/DOC-55914)
