@@ -263,7 +263,7 @@ public class Funcionario {
 ```
 
 
-Criando um Departamento:
+Criando um Departamento utilizando JPA:
 
 ```java
         //Aponta para o local onde se encontram as configurações feitas no hibernate.cfg.xml
@@ -290,7 +290,7 @@ Criando um Departamento:
         factory.close();
 ```
 
-Criando um Funcionário:
+Criando um Funcionário utlizando JPA:
 
 ```java
         //Aponta para o local onde se encontram as configurações feitas no hibernate.cfg.xml
@@ -322,7 +322,7 @@ Criando um Funcionário:
         session.close();
         factory.close();
 ```
-Buscando dados:
+Buscando dados utilizando JPA:
 ```java
 //Aponta para o local onde se encontram as configurações feitas no hibernate.cfg.xml
         Configuration cfg = new Configuration().configure("/hibernate.cfg.xml");
