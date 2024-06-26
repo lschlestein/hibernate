@@ -463,10 +463,10 @@ erDiagram
     FUNCIONARIO ||--o{ PROJETO : "N-1"
 ```
 Crie as entidades com as sua devidas anotações, respeitando a cardinalidade do diagrama.
-Cada Funcionário pertence a um único Departamento (N:1).
-Cada Funcionário trabalha em um único Projeto (N:1).
-Um Departamento tem nenhum ou muitos Funcionários.
-Um Projeto tem nenhum ou muitos Funcionários. 
+- Cada Funcionário pertence a um único Departamento (N:1).
+- Cada Funcionário trabalha em um único Projeto (N:1).
+- Um Departamento tem nenhum ou muitos Funcionários.
+- Um Projeto tem nenhum ou muitos Funcionários. 
 As entidades deverão ser populadas pelo próprio programa. A interface via console é opcional, sendo desejável seu desenvolvimento.
 1 - Deverão apresentadas as seguintes consultas (métodos) para cada uma das entidades:
 * Encontrar todas as entidades
