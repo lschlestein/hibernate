@@ -433,7 +433,11 @@ public class DepartamentoDAO {
     }
 }
 ```
-
+Exemplo de uma query com parâmetros JPQL
+```java
+funcionarios = entityManager.createQuery("select d.funcionarios from Departamento d where d.id= :idDepartamento", Funcionario.class).
+setParameter("idDepartamento",idDepartamento).getResultList();
+```
 Além de DAOs, podem configurar nossas consultas de outra forma através de NamedQueries:
 [Exemplo de Uso de Named Queries](https://www.baeldung.com/hibernate-named-query)
 
