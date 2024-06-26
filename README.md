@@ -160,7 +160,7 @@ resources->hibernate.cfg.xml
 ```
 
 Nesse arquivo, são configuradas as seguintes informações:
-Dados referentes a conexão com o bando de dados a ser utilizado.
+Dados referentes a conexão com o banco de dados a ser utilizado.
 Qual será o comportamento do Hibernate, em específico na propriedade:
 
 Essa propriedade indica o que deve ser feito, caso haja alteração no esquema de uma de nossa tabelas.
