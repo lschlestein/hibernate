@@ -222,7 +222,7 @@ classDiagram
     }
     class Departamento{
         -Long id
-        -Long nome
+        -String nome
         -List <Funcionario> funcionarios
         +getters( )
         +setters( )
