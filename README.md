@@ -158,10 +158,30 @@ resources->hibernate.cfg.xml
     </session-factory>
 </hibernate-configuration>
 ```
-
-Nesse arquivo, são configuradas as seguintes informações:
+É possível também configurar a SessionFactory, diretamente via código, conforme segue:
+```java
+SessionFactory sessionFactory =
+        new Configuration()
+            .addAnnotatedClass(Book.class)
+            .addAnnotatedClass(Author.class)
+            // PostgreSQL
+            .setProperty(AvailableSettings.JAKARTA_JDBC_URL, "jdbc:postgresql://localhost/example")
+            // Credentials
+            .setProperty(AvailableSettings.JAKARTA_JDBC_USER, user)
+            .setProperty(AvailableSettings.JAKARTA_JDBC_PASSWORD, password)
+            // Automatic schema export
+            .setProperty(AvailableSettings.JAKARTA_HBM2DDL_DATABASE_ACTION,
+                         Action.SPEC_ACTION_DROP_AND_CREATE)
+            // SQL statement logging
+            .setProperty(AvailableSettings.SHOW_SQL, true)
+            .setProperty(AvailableSettings.FORMAT_SQL, true)
+            .setProperty(AvailableSettings.HIGHLIGHT_SQL, true)
+            // Create a new SessionFactory
+            .buildSessionFactory();
+```
+Na configuração da SessionFactory são configuradas as seguintes informações:
 Dados referentes a conexão com o banco de dados a ser utilizado.
-Qual será o comportamento do Hibernate, em específico na propriedade:
+Qual será o comportamento do Hibernate, em específico na propriedade: hibernate.hbm2ddl.auto
 
 Essa propriedade indica o que deve ser feito, caso haja alteração no esquema de uma de nossa tabelas.
 
