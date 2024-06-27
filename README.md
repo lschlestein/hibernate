@@ -453,6 +453,54 @@ public class DepartamentoDAO {
     }
 }
 ```
+
+CRUD executado em aula:
+```java
+        //Carrega as configurações do arquivo hibernat.cfg.xml
+        Configuration cfg = new Configuration().configure("/hibernate.cfg.xml");
+        //Cria uma factory
+        SessionFactory factory = cfg.buildSessionFactory();
+        //Cria uma nova session
+        Session session = factory.openSession();
+        //Inicia uma nova transaction
+        session.beginTransaction();
+
+        //Cria um novo departamento
+        Departamento departamento = new Departamento();
+        departamento.setNome("RH");
+        //grava o novo departamento no banco de dados
+        session.persist(departamento);
+
+        //Criando um departamento utilizando o Builder
+        departamento = Departamento.builder().nome("Financeiro").build();
+        //grava o novo departamento no banco de dados
+        session.persist(departamento);
+
+        //Buscando um Departamento do banco de dados com id=1
+        departamento = session.get(Departamento.class,1);
+
+       //Criando uma query, com parâmetros
+        departamento = session.
+                createQuery("SELECT d FROM Departamento d WHERE d.nome=:nomeDepartamento", Departamento.class).
+                setParameter("nomeDepartamento", "Financeiro").
+                getSingleResultOrNull();
+
+        //Criando um novo Funcionário
+        Funcionario funcionario = Funcionario.
+                builder().
+                nome("Angelo").
+                salario(3000.0).
+                departamento(departamento).
+                build();
+
+        //Grava o novo Funcionário e seu respectivo Departamento
+        session.persist(funcionario);
+
+        session.getTransaction().commit();
+        //Encerrando conexão
+        session.close();
+        factory.close();
+```
 Exemplo de uma query com parâmetros JPQL
 ```java
 funcionarios = entityManager.createQuery("select d.funcionarios from Departamento d where d.id= :idDepartamento", Funcionario.class).
