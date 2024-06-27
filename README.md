@@ -459,8 +459,8 @@ erDiagram
         Long id
         String nome
     }
-    FUNCIONARIO ||--o{ DEPARTAMENTO : "N-1"
-    FUNCIONARIO ||--o{ PROJETO : "N-1"
+    FUNCIONARIO |o--o{ DEPARTAMENTO : "N-1"
+    FUNCIONARIO |o--o{ PROJETO : "N-1"
 ```
 Crie as entidades com as sua devidas anotações, respeitando a cardinalidade do diagrama.
 - Cada Funcionário pertence a um único Departamento (N:1).
