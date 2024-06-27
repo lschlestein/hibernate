@@ -471,6 +471,8 @@ Crie as entidades com as sua devidas anotações, respeitando a cardinalidade do
 As entidades deverão ser populadas pelo próprio programa. A interface via console é opcional, sendo desejável seu desenvolvimento.
 
 1 - Deverão apresentadas as seguintes consultas (métodos) para cada uma das entidades:
+* Inserir uma única entidade
+* Inserir uma lista de entidades
 * Encontrar todas as entidades
 * Encontrar uma única entidade
 * Alterar uma entidade
