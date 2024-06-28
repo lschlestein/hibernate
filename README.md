@@ -222,7 +222,7 @@ classDiagram
     }
     class Departamento{
         -Long id
-        -Long nome
+        -String nome
         -List <Funcionario> funcionarios
         +getters( )
         +setters( )
@@ -344,7 +344,7 @@ Criando um Funcionário utlizando JPA:
 ```
 Buscando dados utilizando JPA:
 ```java
-//Aponta para o local onde se encontram as configurações feitas no hibernate.cfg.xml
+        //Aponta para o local onde se encontram as configurações feitas no hibernate.cfg.xml
         Configuration cfg = new Configuration().configure("/hibernate.cfg.xml");
         //Cria uma factory
         SessionFactory factory = cfg.buildSessionFactory();
