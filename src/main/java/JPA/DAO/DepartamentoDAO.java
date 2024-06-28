@@ -26,7 +26,7 @@ public class DepartamentoDAO {
             session.getTransaction().commit();
         } catch (Exception e) {
             e.printStackTrace();
-            throw new HibernateException("Erro ao gravar novo Departamento " + e);
+            throw new HibernateException("Erro ao gravar novo Departamento " + e.getMessage());
         }
     }
 
@@ -37,7 +37,7 @@ public class DepartamentoDAO {
             session.getTransaction().commit();
         } catch (Exception e) {
             e.printStackTrace();
-            throw new HibernateException("Erro ao deletar Departamento " + e);
+            throw new HibernateException("Erro ao deletar Departamento " + e.getMessage());
         }
     }
 
@@ -46,7 +46,7 @@ public class DepartamentoDAO {
             return session.get(Departamento.class, id);
         } catch (Exception e) {
             e.printStackTrace();
-            throw new HibernateException("Erro ao buscar Departamento " + e);
+            throw new HibernateException("Erro ao buscar Departamento " + e.getMessage());
         }
     }
 
@@ -57,7 +57,7 @@ public class DepartamentoDAO {
             session.getTransaction().commit();
         } catch (Exception e) {
             e.printStackTrace();
-            throw new HibernateException("Erro ao atualizar Departamento " + e);
+            throw new HibernateException("Erro ao atualizar Departamento " + e.getMessage());
         }
     }
 }
