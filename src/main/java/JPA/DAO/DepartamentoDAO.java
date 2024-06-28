@@ -15,7 +15,7 @@ public class DepartamentoDAO {
             return session.createQuery("from Departamento").getResultList();
         } catch (Exception e) {
             e.printStackTrace();
-            throw new HibernateException("Não foi possível encontrar todos os Departamentos " + e);
+            throw new HibernateException("Não foi possível encontrar todos os Departamentos " + e.getMessage());
         }
     }
 

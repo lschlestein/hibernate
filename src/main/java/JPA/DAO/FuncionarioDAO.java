@@ -16,7 +16,7 @@ public class FuncionarioDAO {
             return session.createQuery("from Funcionario ").getResultList();
         } catch (Exception e) {
             e.printStackTrace();
-            throw new HibernateException("Não foi possível encontrar todos os Funcionários " + e);
+            throw new HibernateException("Não foi possível encontrar todos os Funcionários " + e.getMessage());
         }
     }
 
@@ -27,7 +27,7 @@ public class FuncionarioDAO {
             session.getTransaction().commit();
         } catch (Exception e) {
             e.printStackTrace();
-            throw new HibernateException("Erro ao gravar novo Funcionário " + e);
+            throw new HibernateException("Erro ao gravar novo Funcionário " + e.getMessage());
         }
     }
 
@@ -38,7 +38,7 @@ public class FuncionarioDAO {
             session.getTransaction().commit();
         } catch (Exception e) {
             e.printStackTrace();
-            throw new HibernateException("Erro ao deletar Funcionário " + e);
+            throw new HibernateException("Erro ao deletar Funcionário " + e.getMessage());
         }
     }
 
@@ -47,7 +47,7 @@ public class FuncionarioDAO {
             return session.get(Funcionario.class, id);
         } catch (Exception e) {
             e.printStackTrace();
-            throw new HibernateException("Erro ao buscar Funcionário " + e);
+            throw new HibernateException("Erro ao buscar Funcionário " + e.getMessage());
         }
     }
 
@@ -58,7 +58,7 @@ public class FuncionarioDAO {
             session.getTransaction().commit();
         } catch (Exception e) {
             e.printStackTrace();
-            throw new HibernateException("Erro ao atualizar Funcionário " + e);
+            throw new HibernateException("Erro ao atualizar Funcionário " + e.getMessage());
         }
     }
 }
