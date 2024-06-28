@@ -1,50 +1,65 @@
 package JPA.DAO;
+
 import JPA.Model.Funcionario;
 import org.hibernate.HibernateException;
+import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class FuncionarioDAO {
+    //Busca a referência da factory já criada para a classe FuncionarioDAO
     private SessionFactory factory = HibernateUtil.getSessionFactory();
-    private List<Funcionario> funcionarios = new ArrayList<>();
-    private Funcionario funcionario;
 
     public List<Funcionario> findAll() {
-        try {
-            HibernateUtil.inSession(factory, entityManager -> {
-                funcionarios = entityManager.createQuery("select f from Funcionario f", Funcionario.class).getResultList();
-            });
-            return funcionarios;
-        }catch (HibernateException e) {
+        try (Session session = factory.openSession()) {
+            return session.createQuery("from Funcionario ").getResultList();
+        } catch (Exception e) {
             e.printStackTrace();
+            throw new HibernateException("Não foi possível encontrar todos os Funcionários " + e);
         }
-        return null;
     }
 
     public void save(Funcionario funcionario) {
-        HibernateUtil.inSession(factory, entityManager -> {
-            entityManager.persist(funcionario);
-        });
+        try (Session session = factory.openSession()) {
+            session.beginTransaction();
+            session.persist(funcionario);
+            session.getTransaction().commit();
+        } catch (Exception e) {
+            e.printStackTrace();
+            throw new HibernateException("Erro ao gravar novo Funcionário " + e);
+        }
     }
 
     public void delete(Funcionario funcionario) {
-        HibernateUtil.inSession(factory, entityManager -> {
-            entityManager.remove(funcionario);
-        });
+        try (Session session = factory.openSession()) {
+            session.beginTransaction();
+            session.delete(funcionario);
+            session.getTransaction().commit();
+        } catch (Exception e) {
+            e.printStackTrace();
+            throw new HibernateException("Erro ao deletar Funcionário " + e);
+        }
     }
 
     public Funcionario findById(int id) {
-        HibernateUtil.inSession(factory, entityManager -> {
-            funcionario = entityManager.find(Funcionario.class, id);
-        });
-        return funcionario;
+        try (Session session = factory.openSession()) {
+            return session.get(Funcionario.class, id);
+        } catch (Exception e) {
+            e.printStackTrace();
+            throw new HibernateException("Erro ao buscar Funcionário " + e);
+        }
     }
 
     public void update(Funcionario funcionario) {
-        HibernateUtil.inSession(factory, entityManager -> {
-            entityManager.merge(funcionario);
-        });
+        try (Session session = factory.openSession()) {
+            session.beginTransaction();
+            session.update(funcionario);
+            session.getTransaction().commit();
+        } catch (Exception e) {
+            e.printStackTrace();
+            throw new HibernateException("Erro ao atualizar Funcionário " + e);
+        }
     }
 }
+

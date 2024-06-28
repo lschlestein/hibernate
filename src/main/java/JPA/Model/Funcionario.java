@@ -20,7 +20,7 @@ public class Funcionario {
     @ToString.Exclude
     private Double salario;
     @ToString.Exclude
-    @ManyToOne(fetch = FetchType.EAGER)
+    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.PERSIST)
     private Departamento departamento;
 
     public Funcionario(String nome) {

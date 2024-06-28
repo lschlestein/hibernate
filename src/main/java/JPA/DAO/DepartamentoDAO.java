@@ -1,45 +1,63 @@
 package JPA.DAO;
 
 import JPA.Model.Departamento;
+import org.hibernate.HibernateException;
+import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class DepartamentoDAO {
     private SessionFactory factory = HibernateUtil.getSessionFactory();
-    private List<Departamento> departamentos = new ArrayList<>();
-    private Departamento departamento;
 
     public List<Departamento> findAll() {
-        HibernateUtil.inSession(factory, entityManager -> {
-            departamentos = entityManager.createQuery("select d from Departamento d", Departamento.class).getResultList();
-        });
-        return departamentos;
+        try (Session session = factory.openSession()) {
+            return session.createQuery("from Departamento").getResultList();
+        } catch (Exception e) {
+            e.printStackTrace();
+            throw new HibernateException("Não foi possível encontrar todos os Departamentos " + e);
+        }
     }
 
     public void save(Departamento departamento) {
-        HibernateUtil.inSession(factory, entityManager -> {
-            entityManager.persist(departamento);
-        });
+        try (Session session = factory.openSession()) {
+            session.beginTransaction();
+            session.persist(departamento);
+            session.getTransaction().commit();
+        } catch (Exception e) {
+            e.printStackTrace();
+            throw new HibernateException("Erro ao gravar novo Departamento " + e);
+        }
     }
 
     public void delete(Departamento departamento) {
-        HibernateUtil.inSession(factory, entityManager -> {
-            entityManager.remove(departamento);
-        });
+        try (Session session = factory.openSession()) {
+            session.beginTransaction();
+            session.delete(departamento);
+            session.getTransaction().commit();
+        } catch (Exception e) {
+            e.printStackTrace();
+            throw new HibernateException("Erro ao deletar Departamento " + e);
+        }
     }
 
     public Departamento findById(int id) {
-        HibernateUtil.inSession(factory, entityManager -> {
-            departamento = entityManager.find(Departamento.class, id);
-        });
-        return departamento;
+        try (Session session = factory.openSession()) {
+            return session.get(Departamento.class, id);
+        } catch (Exception e) {
+            e.printStackTrace();
+            throw new HibernateException("Erro ao buscar Departamento " + e);
+        }
     }
 
     public void update(Departamento departamento) {
-        HibernateUtil.inSession(factory, entityManager -> {
-            entityManager.merge(departamento);
-        });
+        try (Session session = factory.openSession()) {
+            session.beginTransaction();
+            session.update(departamento);
+            session.getTransaction().commit();
+        } catch (Exception e) {
+            e.printStackTrace();
+            throw new HibernateException("Erro ao atualizar Departamento " + e);
+        }
     }
 }
