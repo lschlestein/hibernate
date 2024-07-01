@@ -4,6 +4,7 @@ import JPA.Model.Funcionario;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
 
 import java.util.List;
 
@@ -21,22 +22,30 @@ public class FuncionarioDAO {
     }
 
     public void save(Funcionario funcionario) {
+        Transaction transaction = null;
         try (Session session = factory.openSession()) {
-            session.beginTransaction();
+            transaction = session.beginTransaction();
             session.persist(funcionario);
-            session.getTransaction().commit();
+            transaction.commit();
         } catch (Exception e) {
+            if (transaction != null) {
+                transaction.rollback();
+            }
             e.printStackTrace();
             throw new HibernateException("Erro ao gravar novo Funcionário " + e.getMessage());
         }
     }
 
     public void delete(Funcionario funcionario) {
+        Transaction transaction = null;
         try (Session session = factory.openSession()) {
-            session.beginTransaction();
+            transaction = session.beginTransaction();
             session.delete(funcionario);
-            session.getTransaction().commit();
+            transaction.commit();
         } catch (Exception e) {
+            if (transaction != null) {
+                transaction.rollback();
+            }
             e.printStackTrace();
             throw new HibernateException("Erro ao deletar Funcionário " + e.getMessage());
         }
@@ -52,11 +61,15 @@ public class FuncionarioDAO {
     }
 
     public void update(Funcionario funcionario) {
+        Transaction transaction = null;
         try (Session session = factory.openSession()) {
-            session.beginTransaction();
+            transaction = session.beginTransaction();
             session.update(funcionario);
-            session.getTransaction().commit();
+            transaction.commit();
         } catch (Exception e) {
+            if (transaction != null) {
+                transaction.rollback();
+            }
             e.printStackTrace();
             throw new HibernateException("Erro ao atualizar Funcionário " + e.getMessage());
         }

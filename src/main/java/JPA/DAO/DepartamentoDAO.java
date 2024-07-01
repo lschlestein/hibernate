@@ -4,6 +4,7 @@ import JPA.Model.Departamento;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
 
 import java.util.List;
 
@@ -20,22 +21,30 @@ public class DepartamentoDAO {
     }
 
     public void save(Departamento departamento) {
+        Transaction transaction = null;
         try (Session session = factory.openSession()) {
-            session.beginTransaction();
+            transaction = session.beginTransaction();
             session.persist(departamento);
-            session.getTransaction().commit();
+            transaction.commit();
         } catch (Exception e) {
+            if (transaction != null) {
+                transaction.rollback();
+            }
             e.printStackTrace();
             throw new HibernateException("Erro ao gravar novo Departamento " + e.getMessage());
         }
     }
 
     public void delete(Departamento departamento) {
+        Transaction transaction = null;
         try (Session session = factory.openSession()) {
-            session.beginTransaction();
+            transaction = session.beginTransaction();
             session.delete(departamento);
-            session.getTransaction().commit();
+            transaction.commit();
         } catch (Exception e) {
+            if (transaction != null) {
+                transaction.rollback();
+            }
             e.printStackTrace();
             throw new HibernateException("Erro ao deletar Departamento " + e.getMessage());
         }
@@ -51,11 +60,15 @@ public class DepartamentoDAO {
     }
 
     public void update(Departamento departamento) {
+        Transaction transaction = null;
         try (Session session = factory.openSession()) {
-            session.beginTransaction();
+            transaction = session.beginTransaction();
             session.update(departamento);
-            session.getTransaction().commit();
+            transaction.commit();
         } catch (Exception e) {
+            if (transaction != null) {
+                transaction.rollback();
+            }
             e.printStackTrace();
             throw new HibernateException("Erro ao atualizar Departamento " + e.getMessage());
         }
